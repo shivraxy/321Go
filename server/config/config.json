@@ -1,3 +1,5 @@
+// confirm with instructor how to connect this with Heroku Postgres
+
 {
   "development": {
     "use_env_variable": "DATABASE_URL"

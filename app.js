@@ -14,6 +14,9 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// make app aware of routes
+// this has to come before the catch-all route
+require('./server/routes')(app);
 // default catch-all route with welcome message
 app.get('*', (req, res) => res.status(200).sendStatus({
     message: 'Welcome to 321Go!',
