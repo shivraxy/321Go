@@ -1,31 +1,62 @@
 import React from 'react';
-import GroupMembers from './GroupMembers';
+import EventGroup from './EventGroup';
+import EventGroupItem from './EventGroupItem';
+
 // import App from './App';
 
 class Groups extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        value: ''
+        group_name: '',
+        user_email: '',
+        groups: [{name: "MovieBuffs"},{name: "StonerRock"}]
       };
       
       this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleClick = this.handleClick.bind(this);
     }
-  
+
     handleChange(event) {
-      this.setState({value: event.target.value});
+      
+      const {name, value} = event.target;
+
+      this.setState(
+        {[name]: value});
+
     }
   
-    handleSubmit(event) {
+    handleClick(event) {
         // SEND FORM TO APP.JS...
+        console.log(event);
+        
+        const {name} = event.target;
+        
 
+        let queryString = '';
+        if (event.target.name === "adduser") {
+          queryString = this.state.user_email;
+        } else {
+          if(this.state.group_name.length > 3){
+            queryString = this.state.group_name
+            console.log("in else", queryString)
+          }
+          return alert("noooop")
+        };
 
-        // if SUBMIT value = ADD USER then
+        // fetch(`/${name}`, {
+        //   method: 'POST',
+        //   body: JSON.stringify(queryString),
+        //   headers: new Headers({
+        //     'Content-Type': 'application/json'
+        //   })
+        // }).then(res => res.json());
 
-
-        // if SUBMIT value = ADD GROUP then
-
+        const {groups} = this.state;
+        groups.push({name: queryString});
+        this.setState({groups, group_name: '', user_email: ''});
+        
+        // create a new group if none exists
 
         event.preventDefault();
 
@@ -38,7 +69,7 @@ class Groups extends React.Component {
     render() {
       return (
         <div>
-          <form onSubmit={this.handleSubmit}>
+          <form>
             <br />
             <label>
                 Group Name:
@@ -59,15 +90,23 @@ class Groups extends React.Component {
             </label>
             <br /><br />
             
-            <input type="submit" value="ADD USER" />
-            <br /><br />
-
-            Group Members:
+            <button name="adduser" onClick={this.handleClick}>ADD USER</button>
+            <br /><br />      
+            Groups:
             <br />
-            <GroupMembers />
+            <EventGroup>
+              {this.state.groups.map((group, index) => {
+                    return (
+                      <EventGroupItem
+                        key={index}
+                        name={group.name}
+                      />
+                    );
+                  })}
+            </EventGroup>
             <br /><br />
             
-            <input type="submit" value="ADD GROUP" />
+            <button name="addgroup" onClick={this.handleClick}>ADD GROUP</button>
           </form>
         </div>
       )
