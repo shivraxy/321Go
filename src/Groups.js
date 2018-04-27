@@ -56,14 +56,10 @@ class Groups extends React.Component {
         groups.push({name: queryString});
         this.setState({groups, group_name: '', user_email: ''});
         
-        // create a new group if none exists
+        // create a new group if none exists???
 
         event.preventDefault();
 
-        //reset state of input fields to empty
-        //NOT WORKING!
-        // this.group_name.state.value = '';
-        // this.user_email.state.value = '';
     }
   
     render() {

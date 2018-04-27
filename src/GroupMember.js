@@ -1,11 +1,17 @@
 import React from "react";
 // import Groups from "./Groups";
-import Member from "./Member";
 
-const GroupMembers = props => (
+const GroupMember = props => (
   <div className="content">
-    <Member />
+    <ul>
+        <li>
+          name: {props.name}
+        </li>
+        <li>
+          email: {props.user_email}
+        </li>
+    </ul>
   </div>
 );
 
-export default GroupMembers;
+export default GroupMember;
