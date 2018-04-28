@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import API from '../utils/API';
+import DisplayEvent from './displayEvents'
 
 class SelectEvent extends Component {
     constructor() {
