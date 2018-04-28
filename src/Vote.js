@@ -46,9 +46,9 @@ class Vote extends React.Component {
         return (
             <div>
                 <br /><br />
-                Current User:  {this.state.userName}
+                Current User: USER {this.state.userName}
                 <br /><br />
-                Member of:  {this.state.groupName}
+                Member of: GROUP {this.state.groupName}
                 <br /><br /><br /><br />
 
                 Event 1:  {this.state.eventOne}
