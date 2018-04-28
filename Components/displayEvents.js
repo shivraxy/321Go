@@ -44,7 +44,7 @@ class DisplayEvent extends Component {
         return (
             <div>
                 <h1>Select an Activity</h1>
-                <ImageList handleClick={this.handleClick} images={_.shuffle(this.state.events)} />
+                <SelectEvent handleClick={this.handleClick} images={this.state.events} />
             </div>)
     }
 };

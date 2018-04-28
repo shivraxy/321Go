@@ -35,9 +35,13 @@ ComponentDidMount() {
 
 }
 
-render() {
-    return (
+    render() {
+        return (
+            <div>
+                <h1>Select an Event</h1>
+                <SelectEvent handleClick={this.handleClick} images={this.state.events} />
+            </div>)
+    }
+}
 
-    )
-}
-}
+export default SelectEvent;
