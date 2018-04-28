@@ -1,6 +1,8 @@
 import React from 'react';
-import EventGroup from './EventGroup';
-import EventGroupItem from './EventGroupItem';
+import GroupList from './GroupList';
+import GroupListItem from './GroupListItem';
+import UserList from './UserList';
+import UserListItem from './UserListItem';
 
 // import App from './App';
 
@@ -9,39 +11,41 @@ class Groups extends React.Component {
       super(props);
       this.state = {
         group_name: '',
+        user_name: '',
         user_email: '',
-        groups: [{name: "MovieBuffs"},{name: "StonerRock"}]
+        groups: [{name: "MovieBuffs"}, {name: "StonerRock"}],
+        users: [{name: "Jim", email: "this@that.com"}]
       };
-      
-      this.handleChange = this.handleChange.bind(this);
-      this.handleClick = this.handleClick.bind(this);
     }
 
-    handleChange(event) {
-      
+    handleChange = event => {     
       const {name, value} = event.target;
-
       this.setState(
         {[name]: value});
-
     }
   
-    handleClick(event) {
-        // SEND FORM TO APP.JS...
+    handleClick = event => {
+      
+        event.preventDefault();
         console.log(event);
         
         const {name} = event.target;
-        
 
-        let queryString = '';
-        if (event.target.name === "adduser") {
-          queryString = this.state.user_email;
-        } else {
-          if(this.state.group_name.length > 3){
-            queryString = this.state.group_name
-            console.log("in else", queryString)
-          }
-          return alert("noooop")
+        let userName = '';
+        let userEmail = '';
+        let groupName = '';
+
+        switch(event) {
+          case "adduser":
+            userName = this.state.user_name;
+            userEmail = this.state.user_email;
+            break;
+          case "addgroup":
+            groupName = this.state.group_name;
+            break;
+          // default:
+          //   alert('nope');
+          //   break;
         };
 
         // fetch(`/${name}`, {
@@ -52,23 +56,22 @@ class Groups extends React.Component {
         //   })
         // }).then(res => res.json());
 
-        const {groups} = this.state;
-        groups.push({name: queryString});
-        this.setState({groups, group_name: '', user_email: ''});
-        
-        // create a new group if none exists???
+        const {users} = this.state.users;
+        users.push({name: userName, email: userEmail});
 
-        event.preventDefault();
+        const {groups} = this.state.groups;
+        groups.push({name: groupName});
 
+        this.setState({groups, users, group_name: '', user_name: '', user_email: ''});
     }
   
     render() {
+      console.log(this.state);
       return (
         <div>
-          <form>
             <br />
             <label>
-                Group Name:
+            Group Name:
                 <input 
                     name="group_name"
                     type="text" 
@@ -76,34 +79,56 @@ class Groups extends React.Component {
                     onChange={this.handleChange} />
             </label>
             <br /><br />
+            <button name="addgroup" onClick={this.handleClick}>ADD GROUP</button>
+            <br /><br />
+            Groups:
+            <br />
+            <GroupList>
+              {this.state.groups.map((group, index) => {
+                    return (
+                      <GroupListItem
+                        key={index}
+                        name={group.name}
+                        handleClick={this.handleClick}
+                      />
+                    );
+                  })}
+            </GroupList>
+            <br /><br />
+
             <label>
-                User (Email ID):
+            User Name:
+                <input 
+                    name="user_name"
+                    type="text" 
+                    value={this.state.user_name} 
+                    onChange={this.handleChange} />
+            </label>
+            <br /><br />
+            <label>
+            User Email:
                 <input 
                     name="user_email"
                     type="text" 
                     value={this.state.user_email} 
                     onChange={this.handleChange} />
             </label>
-            <br /><br />
-            
+            <br /><br />            
             <button name="adduser" onClick={this.handleClick}>ADD USER</button>
-            <br /><br />      
-            Groups:
+            <br /><br />
+            Users in GROUP NAME:
             <br />
-            <EventGroup>
-              {this.state.groups.map((group, index) => {
+            <UserList>
+              {this.state.users.map((user, index) => {
                     return (
-                      <EventGroupItem
+                      <UserListItem
                         key={index}
-                        name={group.name}
+                        name={user.name}
                       />
                     );
                   })}
-            </EventGroup>
+            </UserList>
             <br /><br />
-            
-            <button name="addgroup" onClick={this.handleClick}>ADD GROUP</button>
-          </form>
         </div>
       )
     }
