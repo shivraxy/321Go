@@ -6,26 +6,17 @@ import _ from "lodash";
 class DisplayEvent extends Component {
 
     state = {
-        events: [
-            {
-                activity: "fishing",
-                id: 1
-            },
-            {
-                event: "go to the movies",
-                id: 2
-            },
-            {
-                event: "kayaking",
-                id: 3
-            },
-            {
-                event: "swimming",
-                id: 4
-            }
-          
-        ],
-        choices: []
+        events: this.props.events,
+        
+    }
+
+    renderEvents = () => {
+        // let arr = [];
+        return this.props.events.map(event => {
+            <div className="event">
+                <h3 className="title">{this.props.events.name}</h3>
+            </div>
+        })
     }
 
     handleClick = (id) => {
@@ -39,11 +30,11 @@ class DisplayEvent extends Component {
     }
 
     render() {
-        console.log(this.state.choices.length);
+        console.log(this.state);
 
         return (
-            <div classname = "bodydiv">
-                
+            <div classname="bodydiv">
+                {this.renderEvents()}
                 <h1>Select an Activity</h1>
                 <SelectEvent event={this.state.events} />
             </div>)
