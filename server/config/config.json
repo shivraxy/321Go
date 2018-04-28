@@ -1,0 +1,26 @@
+// confirm with instructor how to connect this with Heroku Postgres
+
+{
+  "development": {
+    "use_env_variable": "DATABASE_URL"
+    // "username": "root",
+    // "password": null,
+    // "database": "321go-dev",
+    // "host": "127.0.0.1",
+    // "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "321go_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "321go_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
