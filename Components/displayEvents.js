@@ -42,9 +42,10 @@ class DisplayEvent extends Component {
         console.log(this.state.choices.length);
 
         return (
-            <div>
+            <div classname = "bodydiv">
+                
                 <h1>Select an Activity</h1>
-                <SelectEvent handleClick={this.handleClick} images={this.state.events} />
+                <SelectEvent event={this.state.events} />
             </div>)
     }
 };
