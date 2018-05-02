@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import API from './utils/API'; //change based on updated folder structure because Components is now inside src
+import API from '../utils/API';
 
 class SelectEvent extends Component {
     constructor() {
@@ -31,6 +31,9 @@ class SelectEvent extends Component {
     }
 
 ComponentDidMount() {
+
+    // fetch()
+    
 
 }
 
