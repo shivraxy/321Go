@@ -50,5 +50,7 @@ class Card extends React.Component {
     };
 };
 
+export default CardContainer;
+
 // render Card component
 // ReactDOM.render(<Card />, cardContainer);
