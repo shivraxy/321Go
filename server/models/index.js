@@ -16,9 +16,9 @@ var db        = {};
 // use that to connect to database
 let sequelize;
 if (config.use_env_variable) {
-  var sequelize = new Sequelize(process.env[config.use_env_variable]);
+  sequelize = new Sequelize(process.env[config.use_env_variable]);
 } else {
-  var sequelize = new Sequelize(
+  sequelize = new Sequelize(
     config.database, config.username, config.password, config
   );
 }
