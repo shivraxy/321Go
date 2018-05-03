@@ -1,8 +1,5 @@
 import React from 'react';
-import GroupList from './GroupList';
-import GroupListItem from './GroupListItem';
-import UserList from './UserList';
-import UserListItem from './UserListItem';
+import TableThing from "./TableThing";
 
 class Groups extends React.Component {
     constructor(props) {
@@ -13,11 +10,11 @@ class Groups extends React.Component {
       };
     }
 
-    handleChange = event => {     
-      const {name, value} = event.target;
-      this.setState(
-        {[name]: value});
-    }
+    // handleChange = event => {     
+    //   const {name, value} = event.target;
+    //   this.setState(
+    //     {[name]: value});
+    // }
 
     // handleAddUser = event => {
     //   event.preventDefault();
@@ -28,15 +25,15 @@ class Groups extends React.Component {
     //   this.setState({ users: [...this.state.users, userName] })
     // }
     
-    handleAddGroup = event => {
-      event.preventDefault();
-      console.log(event.target.value);
-      const { groupName } = event.target;
-      console.log('groupName :::::>', groupName);
-      let { groups } = this.state.groups;
-      this.setState({ groups: [...this.state.groups, groupName] });
-      this.handleAddGroup = this.handleAddGroup.bind(this);      
-    }
+    // handleAddGroup = event => {
+    //   event.preventDefault();
+    //   console.log(event.target.value);
+    //   const { groupName } = event.target;
+    //   console.log('groupName :::::>', groupName);
+    //   let { groups } = this.state.groups;
+    //   this.setState({ groups: [...this.state.groups, groupName] });
+    //   this.handleAddGroup = this.handleAddGroup.bind(this);      
+    // }
 
     //     // fetch(`/${name}`, {
     //     //   method: 'POST',
@@ -50,22 +47,12 @@ class Groups extends React.Component {
       return (
         <div>
             <br />
-            <h2>WELCOME, USERNAME!</h2>
-            <br /><br />
             GROUPS (click on group to join): 
             <br /><br />
-            <GroupList>
-                {this.state.groups.map((group, index) => {
-                    return (
-                      <GroupListItem
-                        key={index}
-                        name={group.name}
-                        onClick={this.handleAddUser}
-                      />
-                    );
-                })}
-                {/* RETURN A NOTE: "Added to ___ GROUP" */}
-            </GroupList>
+            
+            <TableThing />
+
+            
             <br /><br />
             <label>
             CREATE NEW GROUP:
