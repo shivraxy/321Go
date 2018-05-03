@@ -1,7 +1,7 @@
 import React from "react";
 
-const EventGroups = props => (
+const GroupList = props => (
     <ul className="list-group">{props.children}</ul>
 );
 
-export default EventGroups;
+export default GroupList;
