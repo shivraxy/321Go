@@ -2,7 +2,7 @@ import React from 'react';
 import UserList from './UserList';
 import UserListItem from './UserListItem';
 
-class Groups extends React.Component {
+class UsersWhoVote extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
