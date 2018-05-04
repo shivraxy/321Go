@@ -1,5 +1,6 @@
 import React from 'react';
 import TableThing from "./TableThing";
+import GroupList from './GroupList';
 
 class Groups extends React.Component {
     constructor(props) {
@@ -50,8 +51,7 @@ class Groups extends React.Component {
             GROUPS (click on group to join): 
             <br /><br />
             
-            <TableThing />
-
+            <GroupList groups={this.state.groups}/>
             
             <br /><br />
             <label>
