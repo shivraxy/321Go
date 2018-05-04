@@ -2,7 +2,7 @@ import React from "react";
 import GroupListItem from './GroupListItem';
 
 const GroupList = props => {
-  console.log(props.groups);
+  console.log("props groups", props.groups);
   const listGroups = props.groups ?
     props.groups.map((group, index) => {
       //group is a string
@@ -10,7 +10,8 @@ const GroupList = props => {
 
       return (
         <GroupListItem
-          name = {group}
+          key = {index}
+          name = {group.name}
         />
       );
     }) : "hey man there ain\'t shit here"

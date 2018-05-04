@@ -1,0 +1,21 @@
+.group-wrapper {
+  width: 900px;
+  margin: 50px auto 0;
+  text-align: center;
+}
+
+.select-event-item {
+  width: 200px;
+  margin: 10px;
+  text-align: center;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.select-event-item button {
+  margin-top: 15px;
+}
+
+.save-button {
+  margin-top: 50px;
+}
