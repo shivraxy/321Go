@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import SignUp from './Components/Auth/SignUp'
 import SignIn from './Components/Auth/SignIn'
-import Groups from "./Groups";
+import Groups from "./Groups2";
 
 import './App.css';
 
