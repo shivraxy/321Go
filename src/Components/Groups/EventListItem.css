@@ -1,0 +1,30 @@
+.list-item {
+  background-color: #ccc;
+  height: 200px;
+  width: 200px;
+  display: inline-block;
+  position: relative;
+  margin-right: 10px;
+}
+
+.list-item a {
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  padding-top: 14px;
+  font-weight: bold;
+  font-size: 24px;
+  background-color: #000;
+  color: #ffffff;
+  bottom: 0;
+  left: 0;
+}
+
+.selected .list-item{
+  border: 6px solid blue;
+}
+
+.selected .list-item a {
+  height: 44px;
+}
