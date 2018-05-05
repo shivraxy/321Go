@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from "react";
 import EventList from "./EventList";
+import Vote from "./Vote";
 
 class Checkbox extends Component {
     state = {
@@ -11,12 +12,15 @@ class Checkbox extends Component {
         this.setState(({ isChecked }) => (
             {isChecked: !isChecked}
         ));
-
-        //if checkbox is checked, send event to group for voting
-
-        if (this.state.isChecked === true) {
-            
+        
+        { (this.state.isChecked === true)
+            ? this.checkToVote = event => {<Vote event />}
+            : null
         }
+    }
+
+    checkToVote = () => {
+        return props => <EventList event={props.event} {...props} />
     }
 
     render() {
